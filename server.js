@@ -25,7 +25,7 @@ app.get('/render', async (req,res) => {
 
     res.send(`
     <script>
-        window.close()
+        window.location = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
     </script>    
         `) 
 })
