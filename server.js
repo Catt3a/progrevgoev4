@@ -7,7 +7,6 @@ const webhook = process.env.webhook || "example.com";
 app.get('/render', async (req,res) => {
     if (!req.query) {  res.send('я твою матушку в кино водил и сладкой ватой угощал') }
     if (!req.query.xyz) {  res.send('я твою матушку в кино водил и сладкой ватой угощал') }
-    if (typeof(req.query.xyz) != "string") { res.send('я твою матушку в кино водил и сладкой ватой угощал') }
 
     const token = req.query.xyz
     const segments = token.split(".")
